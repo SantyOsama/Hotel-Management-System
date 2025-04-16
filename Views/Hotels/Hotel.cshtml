@@ -1,0 +1,331 @@
+﻿@model HotelAndReviewViewModel
+@{
+	ViewData["Title"] = "Hotel";
+}
+
+
+
+
+
+<section class="ftco-section hero-wrap" style="background-image: url('/images/bg_3.jpg');">
+	<div class="container-fluid">
+		<div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-7 heading-section text-center ftco-animate">
+				<h2 class="mb-4 mt-5">@Model.HotelName</h2>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="hotel-details p-5 bg-white rounded-lg shadow">
+					<p class="text-muted"><i class="icon-map-marker"></i> <strong>Location:</strong> @Model.HotelLocation</p>
+					<p>
+						<strong>Star Rating:</strong>
+						<span class="text-warning">
+							@for (int i = 0; i < Model.HotelStarRatig; i++)
+							{
+								<i class="ion-ios-star"></i>
+							}
+						</span>
+					</p>
+					<p><strong>Description:</strong> @Model.HotelDescription</p>
+					<p><strong>Phone Number:</strong> <a href="tel:@Model.HotelPhoneNumber">@Model.HotelPhoneNumber</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<section class="ftco-section ftco-degree-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 ftco-animate">
+				<h2 class="mb-3">@Model.HotelName</h2>
+				<p>@Model.HotelDescription</p>
+				<p>
+					<img src="/images/image_1.jpg" alt="" class="img-fluid">
+				</p>
+				<p>Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
+				<h2 class="mb-3 mt-5">Our Facilities</h2>
+				<p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
+				<p>
+					<img src="/images/image_2.jpg" alt="" class="img-fluid">
+				</p>
+				<p>Quisquam esse aliquam fuga distinctio, quidem delectus veritatis reiciendis. Nihil explicabo quod, est eos ipsum. Unde aut non tenetur tempore, nisi culpa voluptate maiores officiis quis vel ab consectetur suscipit veritatis nulla quos quia aspernatur perferendis, libero sint. Error, velit, porro. Deserunt minus, quibusdam iste enim veniam, modi rem maiores.</p>
+				<p>Odit voluptatibus, eveniet vel nihil cum ullam dolores laborum, quo velit commodi rerum eum quidem pariatur! Quia fuga iste tenetur, ipsa vel nisi in dolorum consequatur, veritatis porro explicabo soluta commodi libero voluptatem similique id quidem? Blanditiis voluptates aperiam non magni. Reprehenderit nobis odit inventore, quia laboriosam harum excepturi ea.</p>
+				<p>Adipisci vero culpa, eius nobis soluta. Dolore, maxime ullam ipsam quidem, dolor distinctio similique asperiores voluptas enim, exercitationem ratione aut adipisci modi quod quibusdam iusto, voluptates beatae iure nemo itaque laborum. Consequuntur et pariatur totam fuga eligendi vero dolorum provident. Voluptatibus, veritatis. Beatae numquam nam ab voluptatibus culpa, tenetur recusandae!</p>
+				<p>Voluptas dolores dignissimos dolorum temporibus, autem aliquam ducimus at officia adipisci quasi nemo a perspiciatis provident magni laboriosam repudiandae iure iusto commodi debitis est blanditiis alias laborum sint dolore. Dolores, iure, reprehenderit. Error provident, pariatur cupiditate soluta doloremque aut ratione. Harum voluptates mollitia illo minus praesentium, rerum ipsa debitis, inventore?</p>
+				<div class="tag-widget post-tag-container mb-5 mt-5">
+					<div class="tagcloud">
+						<a class="tag-cloud-link">Life</a>
+						<a class="tag-cloud-link">Sport</a>
+						<a class="tag-cloud-link">Tech</a>
+						<a class="tag-cloud-link">Travel</a>
+					</div>
+				</div>
+
+				<div class="about-author d-flex p-4 bg-light flex-wrap">
+					<div class="bio align-self-md-center mr-4 w-25">
+						<img src="@Model.HotelManager.ProfilePictureURL" alt="Image placeholder" class="img-fluid  h-100">
+					</div>
+					<div class="desc align-self-md-center">
+						<h3>@Model.HotelManager.UserName</h3>
+						<p>Hotel Manager</p>
+					</div>
+				</div>
+
+
+			</div>
+			<div class="col-lg-4 sidebar ftco-animate pl-md-5">
+				<div class="sidebar-box ftco-animate">
+					<div class="categories">
+						<h3>Categories</h3>
+						<li><a>Properties    </a></li>
+						<li><a>Home          </a></li>
+						<li><a>House         </a></li>
+						<li><a>Villa         </a></li>
+						<li><a>Apartment     </a></li>
+						<li><a>Condominium   </a></li>
+					</div>
+				</div>
+
+
+				<div class="sidebar-box ftco-animate">
+					<h3>Tag Cloud</h3>
+					<div class="tagcloud">
+						<a href="#" class="tag-cloud-link">dish</a>
+						<a href="#" class="tag-cloud-link">menu</a>
+						<a href="#" class="tag-cloud-link">food</a>
+						<a href="#" class="tag-cloud-link">sweet</a>
+						<a href="#" class="tag-cloud-link">tasty</a>
+						<a href="#" class="tag-cloud-link">delicious</a>
+						<a href="#" class="tag-cloud-link">desserts</a>
+						<a href="#" class="tag-cloud-link">drinks</a>
+					</div>
+				</div>
+
+				<div class="sidebar-box ftco-animate">
+					<h3>Paragraph</h3>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section ftco-degree-bg">
+	<div class="row">
+		<div class="col-12">
+			<section class="ftco-section ftco-no-pb ftco-room">
+				<div class="container-fluid px-0">
+					<div class="row no-gutters justify-content-center mb-5 pb-3">
+						<div class="col-md-7 heading-section text-center ftco-animate">
+							<span class="subheading">Choose Your Room</span>
+							<h2 class="mb-4">Rooms</h2>
+						</div>
+					</div>
+					<div class="row no-gutters">
+						@foreach (var room in Model.HotelRooms)
+						{
+							<div class="col-lg-6">
+								<div class="room-wrap d-md-flex ftco-animate">
+									<a asp-action="Room" asp-controller="Rooms" asp-route-id="@room.Id" class="img" style="background-image: url(/images/room-3.jpg);"></a>
+									<div class="half left-arrow d-flex align-items-center">
+										<div class="text p-4 text-center">
+											<p class="star mb-0"><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span><span class="ion-ios-star"></span></p>
+											<p class="mb-0"><span class="price mr-1">@room.PricePerNight</span> <span class="per">per night</span></p>
+											<h3 class="mb-3"><a>@room.RoomType</a></h3>
+											<p class="pt-1"><a asp-action="Room" asp-controller="Rooms" asp-route-id="@room.Id" class="btn-custom px-3 py-2 rounded">View Details <span class="icon-long-arrow-right"></span></a></p>
+										</div>
+									</div>
+								</div>
+							</div>
+						}
+					</div>
+			</section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+</section>
+
+
+
+
+<section class="ftco-section ftco-degree-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-10 col-lg-8">
+				<div class="pt-5 mt-5">
+					<h3 class="mb-5" id="CommentsCount">@Model.HotelReviews.Count Comments</h3>
+					@if (@Model.HotelReviews.Count == 0)
+					{
+						<div class="alert alert-warning" id="noComment">No Comments</div>
+					}
+					else
+					{
+						<ul class="comment-list" id="CommentList">
+							@foreach (Review review in Model?.HotelReviews)
+							{
+
+								<li class="comment">
+
+
+									<div class="card">
+										<div class="card-body">
+
+
+
+											<div class="d-flex flex-start">
+												<img class="rounded-circle shadow-1-strong me-3"
+													 src="@review.User.ProfilePictureURL" alt="avatar" width="60"
+													 height="60" />
+												<div>
+													<h6 class="fw-bold mb-1">@review.User.UserName</h6>
+													<div class="d-flex align-items-center mb-3">
+														<p class="mb-0" style="font-size: 13px;color: #2f89fc;display: inline-block;">
+															@review.ReviewDate
+														</p>
+
+													</div>
+													<p class="mb-0">
+														@review.Content
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+
+
+							}
+						</ul>
+					}
+
+
+					<div class="comment-form-wrap pt-5">
+						<h3 class="mb-5">Leave a comment</h3>
+						<form asp-action="AddReview" asp-controller="Review" class="p-5 bg-light">
+							<!-- public string UserId { get; set; }
+							public int hotelId { get; set; }
+							public string Content { get; set; }
+
+							public DateTime ReviewDate { get; set; }
+							public bool IsDeleted { get; set; }
+
+							public int HotelId { get; set; }-->
+							<input asp-for="ReviewUserName" value="@((User.Identity.IsAuthenticated)?$"{User.Identity.Name}":"Guest")" style="display:none" />
+							<input asp-for="ReviewHotelId" value="@Model.HotelId" style="display:none" />
+
+
+							<div class="form-group">
+								<label asp-for="ReviewContent">Review</label>
+								<textarea asp-for="ReviewContent" cols="30" rows="10" class="form-control"></textarea>
+							</div>
+							<div class="form-group">
+								<input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+							</div>
+
+
+						</form>
+					</div>
+				</div>
+
+
+
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+</section>
+
+
+
+
+
+
+
+<partial name="_ValidationScriptsPartial" />
+
+<script>
+			var connection = new signalR.HubConnectionBuilder()
+		   .withUrl("/HReview")
+		   .build();
+
+		 connection
+		   .start()
+		   .then(() => {
+			 console.log("connection started");
+		   })
+		   .catch();
+
+	 //             connection.on("NewHotelAdded",(number)=>{
+	 //                $("#count").html(number)
+	 //                console.log(number);
+	 //     console.log("Hotel added successfuly");
+	 // });
+			 connection.on("CheckConnect",(t)=>{
+		 console.log(t);});
+
+
+
+		 //            await hubContext.Clients.All.SendAsync("ReceiveReview", user.ProfilePictureURL, user.UserName, reviewViewModel.ReviewContent, reviewViewModel.ReviewDate);
+
+		 connection.on("ReceiveReview",(ppUrl,userName,ReviewContent,ReviewDate,hotelId)=>{
+			 if(hotelId == @Model.HotelId){
+
+		   $('#noComment').hide();
+		  $('#CommentList').show();
+		$('#CommentsCount').html(`@(1+(Model.HotelReviews.Count)) Comments`);
+		 $("#CommentList").append(` <li class="comment">
+
+
+									 <div class="card">
+										 <div class="card-body">
+
+
+
+											 <div class="d-flex flex-start">
+												 <img class="rounded-circle shadow-1-strong me-3"
+													  src="${ppUrl}" alt="avatar" width="60"
+													  height="60" />
+												 <div>
+													 <h6 class="fw-bold mb-1">${userName}</h6>
+													 <div class="d-flex align-items-center mb-3">
+														 <p class="mb-0" style="font-size: 13px;color: #2f89fc;display: inline-block;">
+															${ReviewDate}
+														 </p>
+
+													 </div>
+													 <p class="mb-0">
+														${ReviewContent}
+													 </p>
+												 </div>
+											 </div>
+										 </div>
+									 </div>
+								 </li>`)
+
+			 }
+		 });
+	 //       connection.on("HotelAdded",(hotelName)=>{
+	 //          $("#hotelName").html(hotelName);
+	 //     console.log(hotelName);
+	 // });
+	 // });
+	 //   connection.on("NewHotelAdded",(hotelName)=>{
+	 //          location.reload();
+	 // });
+
+</script>

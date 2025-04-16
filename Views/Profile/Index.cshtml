@@ -1,0 +1,104 @@
+﻿@using static HotelMangementSystem.Models.Enums.Enums
+@model HotelMangementSystem.Models.ApplicationUser
+
+@{
+	ViewBag.Title = "My Profile";
+	int i = 1;
+}
+
+@* <h2>@ViewBag.Title</h2> *@
+
+<div class="hero-wrap" style="background-image: url('/images/bg_3.jpg');">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+				<div class="text">
+					@* <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotels.html">Hotels</a></span> <span>Hotel Name</span></p> *@
+					<h1 class="mb-4 bread">Profile</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+@if (ViewBag.LatestBookesHotels != null)
+{
+
+
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10 mt-5 me-5">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Check in date</th>
+						<th scope="col">Check out date</th>
+						<th scope="col">Total price</th>
+						<th scope="col">Cancel</th>
+
+					</tr>
+				</thead>
+				<tbody>
+
+					@foreach (var item in ViewBag.LatestBookesHotels)
+					{
+						<tr>
+							<th>@(i++)</th>
+							<td>@(item.CheckInDate.ToString("yyyy-MM-dd"))</td>
+							<td>@(item.CheckOutDate.ToString("yyyy-MM-dd"))</td>
+							<td>$@(item.Bill.TotalPrice)</td>
+							@if (item.CheckOutDate > DateTime.Now && item.ReservistionStatus == ReservistionStatuses.Confirmed)
+							{
+								<td><a asp-action="CancelBook" asp-controller="Cart" asp-route-ReservationID="@item.Id" class="btn btn-warning rounded">Cancel</a></td>
+							}
+							else if (item.CheckOutDate < DateTime.Now && item.ReservistionStatus == ReservistionStatuses.Completed)
+							{
+								<td><a class="btn btn-success rounded">Completed</a></td>
+							}
+							else if (item.ReservistionStatus == ReservistionStatuses.Cancled)
+							{
+								<td><a class="btn btn-danger rounded">Canceled</a></td>
+							}
+							else if (item.CheckOutDate < DateTime.Now )
+							{
+								<td><a class="btn btn-info rounded">Testing case</a></td>
+							}
+
+							
+
+						</tr>
+
+					}
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+}
+
+
+
+<div class="row">
+	<div class="col-md-3"></div>
+
+	<div class="col-md-6 mt-5 me-5">
+
+
+
+		<div class="card p-3 mb-5">
+			@if (!string.IsNullOrEmpty(Model.ProfilePictureURL))
+			{
+				<img src="@Model.ProfilePictureURL" class="mb-3 w-100" />
+			}            <div class="card-body">
+				<h5 class="card-title"><strong>Full Name:</strong> @Model.UserName</h5>
+				<p class="card-text"><strong>Email:</strong> @Model.Email</p>
+				<p class="card-text"><strong>Phone:</strong> @Model.PhoneNumber</p>
+				<a class="btn btn-primary mt-2" href="@Url.Action("Edit", "Profile")">Edit Profile</a>
+			</div>
+		</div>
+
+	</div>
+</div>

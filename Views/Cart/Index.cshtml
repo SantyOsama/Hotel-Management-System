@@ -1,0 +1,262 @@
+﻿@model ReservitionViewModel
+@{
+	ViewData["Title"] = "Cart";
+	int Sum = 0;
+	double vat = 0.1;
+	double totalSum = 0;
+}
+
+
+
+
+<div class="hero-wrap" style="background-image: url('/images/bg_3.jpg');">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+			<div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+				<div class="text">
+					@* <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotels.html">Hotels</a></span> <span>Hotel Name</span></p> *@
+					<h1 class="mb-4 bread">Cart</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+@if (ViewBag.Booked != null && ViewBag.Booked == true)
+{
+	<div class="alert alert-success">You have been booked successfully</div>
+}@if (ViewBag.BookedRoom != null && ViewBag.BookedRoom == true)
+{
+
+
+	<div class="alert alert-danger">You can't Book a prereserved room number : @ViewBag.reservedRoomNumber</div>
+}
+
+@if (@Model?.Rooms?.Count == 0)
+{
+
+
+	<section class="h-100 gradient-custom">
+		<div class="container py-5">
+			<div class="row d-flex justify-content-center my-4">
+				<div class="col-md-8">
+					<div class="alert alert-danger">Add Rooms To Cart</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+}
+else
+{
+
+
+	<form asp-action="Booked">
+		<section class="h-100 gradient-custom">
+			<div class="container py-5">
+				<div class="row d-flex justify-content-center my-4">
+					<div class="col-md-8">
+
+						<div class="card mb-4">
+							<div class="card-header py-3">
+								<h5 class="mb-0">Cart - @Model.Rooms.Count rooms</h5>
+							</div>
+							<div class="card-body">
+								<!-- Single item -->
+								@foreach (var item in @Model.Rooms)
+								{
+									<input asp-for="UserId" value="@ViewBag.UserId" readonly style="display:none" />
+									<div class="row justify-content-center align-items-start">
+										<div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+
+											<div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+												<img src="/images/room-6.jpg"
+													 class="w-100" alt="" />
+												<a href="#!">
+													<div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+												</a>
+											</div>
+										</div>
+										<div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+											<h4> @item.RoomType <strong>#@item.RoomNumber</strong></h4>
+											<p>Capacity: @item.Capacity</p>
+
+
+
+
+										</div>
+										<div class="col-lg-3 col-md-6 mb-4 mb-lg-0 d-flex align-items-baseline">
+											<div class="d-inline-flex justify-content-center align-items-baseline mb-4" style="max-width: 300px">
+												<div class="card mb-4">
+													<div class="card-body">
+														<h4><strong>$@item.PricePerNight</strong></h4>
+													</div>
+
+												</div>
+											</div>
+											<a asp-action="RemoveFromRoomsList" asp-controller="Cart" asp-route-RoomId="@item.Id" class="btn btn-danger rounded btn-sm me-1 mb-2  ms-3  icon-delete"
+											   title="Remove item">
+											</a>
+										</div>
+
+									</div>
+									<hr class="my-4" />
+								}
+
+
+
+
+
+								<div class="col-lg-12 col-md-12 mb-4 mb-lg-0">
+									<div class="mb-4" style="width:100%">
+										<div class="card mb-4">
+											<div class="card-body">
+												<p><strong>Expected Check-in & Check-out dates</strong></p>
+
+
+												<div class="d-flex flex-wrap">
+
+
+													<div class="col-sm-12 col-md-6 col-lg-6  d-flex ">
+													<div class="form-group align-self-stretch d-flex align-items-end">
+														<div class="wrap align-self-stretch">
+															<label asp-for="CheckInDate">Check-in Date</label>
+															<input type="text"
+																   asp-for="CheckInDate"
+																   class="form-control checkin_date"
+																   placeholder="Check-in date"
+																   value=""
+																   min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+															<span asp-validation-for="CheckInDate" class="text-danger"></span>
+														</div>
+													</div>
+												</div>
+													<div class="col-sm-12 col-md-6 col-lg-6  d-flex">
+													<div class="form-group align-self-stretch d-flex align-items-end">
+														<div class="wrap align-self-stretch">
+															<label asp-for="CheckOutDate">Check-out Date</label>
+															<input type="text"
+																   asp-for="CheckOutDate"
+																   class="form-control checkout_date"
+																   placeholder="Check-out date"
+																   value="" />
+															<span asp-validation-for="CheckOutDate" class="text-danger"></span>
+
+														</div>
+													</div>
+												</div>
+
+												</div>
+												@* <p class="mb-0">12.10.2020 - 14.10.2020</p> *@
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+
+
+
+							</div>
+
+						</div>
+
+						<!--     <div class="card mb-4 mb-lg-0">
+						<div class="card-body">
+						<p><strong>We accept</strong></p>
+						<img class="me-2" width="45px"
+						src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+						alt="Visa" />
+						<img class="me-2" width="45px"
+						src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+						alt="American Express" />
+						<img class="me-2" width="45px"
+						src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+						alt="Mastercard" />
+						<img class="me-2" width="45px"
+						src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.webp"
+						alt="PayPal acceptance mark" />
+						</div>
+						</div>-->
+
+					</div>
+
+
+					<div class="col-md-4">
+						<div class="card mb-4">
+							<div class="card-header py-3">
+								<h5 class="mb-0">Summary</h5>
+							</div>
+							<div class="card-body">
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+										Rooms
+										<span>
+											@foreach (var item in Model.Rooms)
+											{
+												Sum += item.PricePerNight;
+											}
+
+											
+										</span>
+									</li>
+									@* <li class="list-group-item d-flex justify-content-between align-items-center px-0"> *@
+									@* 	Shipping *@
+									@* 	<span>Gratis</span> *@
+									@* </li> *@
+									<li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+										<div>
+											<strong>Total amount</strong>
+											<strong>
+												<p class="mb-0">(including VAT)</p>
+											</strong>
+										</div>
+										<h3>
+											<strong>
+												$@(totalSum = Sum + (Sum * vat))
+												@* @(ViewBag.TotalSum = totalSum) *@
+											</strong>
+										</h3>
+									</li>
+								</ul>
+
+								@if (ViewBag.Booked != null && ViewBag.Booked == true)
+								{
+
+									<button disabled type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block rounded">
+										Go to checkout
+									</button>
+								}
+								else
+								{
+
+									<button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block rounded">
+										Go to checkout
+									</button>
+								}
+
+
+
+
+
+
+
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	</form>
+}
+
+<partial name="_ValidationScriptsPartial" />

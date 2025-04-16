@@ -1,0 +1,120 @@
+﻿@model List<HotelMangementSystem.ViewModels.HotelViewModel>
+
+@{
+    ViewData["Title"] = "Hotel List";
+}
+
+<div class="hero-wrap" style="background-image: url('/images/bg_3.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    <h1 class="mb-4 bread">Hotels</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <!-- City filter -->
+            <form method="get" class="col-md-6">
+                <label for="cityFilter">Choose a City:</label>
+                <select id="cityFilter" name="cityName" class="form-control" onchange="this.form.submit()">
+                    <option value="">All Cities</option>
+                    @foreach (var city in ViewBag.Cities as List<string>)
+                    {
+                        <option value="@city" selected="@(ViewBag.CityName == city ? "selected" : null)">@city</option>
+                    }
+                </select>
+            </form>
+
+            <!-- Sorting filter -->
+            <form method="get" class="col-md-6">
+                <label for="sortOrder">Sort by Star Rating:</label>
+                <select id="sortOrder" name="sortOrder" class="form-control" onchange="this.form.submit()">
+                    <option value="desc" selected="@(ViewBag.SortOrder == "desc" ? "selected" : null)">High to Low</option>
+                    <option value="asc" selected="@(ViewBag.SortOrder == "asc" ? "selected" : null)">Low to High</option>
+                </select>
+                <input type="hidden" name="cityName" value="@ViewBag.CityName" />
+            </form>
+        </div>
+        <br />
+
+        <div class="row">
+            @if (Model.Count == 0)
+            {
+                <div class="col-12 text-center">
+                    <p style="color: red; font-size: 1.5rem;">No hotels available at the moment.</p>
+                </div>
+            }
+            else
+            {
+                @foreach (var hotel in Model)
+                {
+                    <div class="col-md-4 d-flex ftco-animate mb-4">
+                        <div class="blog-entry align-self-stretch" style="width: 100%; height: 100%; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); border-radius: 15px; overflow: hidden;">
+                            <a href="/Hotels/Hotel/@hotel.Id" class="block-20 rounded" style="background-image: url('/images/room-1.jpg'); height: 250px; background-size: cover; background-position: center;"></a>
+                            <div class="text mt-3 p-3" style="min-height: 200px;">
+                                <div class="meta mb-2">
+                                    <div><a href="/Hotels?cityName=@hotel.Location"><span class="icon-map-marker"></span> @hotel.Location</a></div>
+                                    <div><a href="tel:@hotel.PhoneNumber"><span class="icon-phone"></span> @hotel.PhoneNumber</a></div>
+                                </div>
+                                <h3 class="heading"><a href="#">@hotel.Name</a></h3>
+                                <p>@hotel.Description</p>
+
+                              <!-- **************** STARS ****************  -->
+                                <div class="star-rating">
+                                    @for (int i = 0; i < hotel.StarRating; i++)
+                                    {
+                                        <span style="color: gold; font-size: 1.5rem;">&#9733;</span> 
+                                    }
+                                    @for (int i = hotel.StarRating; i < 5; i++)
+                                    {
+                                        <span style="color: gray; font-size: 1.5rem;">&#9733;</span> 
+                                    }
+                                </div>
+                                <a href="/Hotels/Hotel/@hotel.Id" class="btn btn-secondary rounded mt-2">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <!-- Pagination -->
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        @if (ViewBag.CurrentPage > 1)
+                        {
+                            <li><a href="?cityName=@ViewBag.CityName&sortOrder=@ViewBag.SortOrder&page=@(ViewBag.CurrentPage - 1)">&lt;</a></li>
+                        }
+
+                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                        {
+                            if (i == ViewBag.CurrentPage)
+                            {
+                                <li class="active"><span>@i</span></li>
+                            }
+                            else
+                            {
+                                <li><a href="?cityName=@ViewBag.CityName&sortOrder=@ViewBag.SortOrder&page=@i">@i</a></li>
+                            }
+                        }
+
+                        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                        {
+                            <li><a href="?cityName=@ViewBag.CityName&sortOrder=@ViewBag.SortOrder&page=@(ViewBag.CurrentPage + 1)">&gt;</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

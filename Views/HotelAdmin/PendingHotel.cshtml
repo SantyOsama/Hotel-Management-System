@@ -1,0 +1,106 @@
+﻿@model PendingHotel
+
+@{
+    ViewData["Title"] = "PendingHotel";
+}
+
+<div class="hero-wrap" style="background-image: url('/images/bg_3.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    @* <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotels.html">Hotels</a></span> <span>Hotel Name</span></p> *@ 
+                    <h1 class="mb-4 bread">Hotel</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@if (ViewBag.PendingHotelAddedSuccessfulltToHotels != null && ViewBag.PendingHotelAddedSuccessfulltToHotels == true)
+{
+    <div class="alert alert-success">Pending Hotel Added Successfully To Hotels !</div>
+}
+
+
+<div class="row">
+
+    <div class="col-1 col-sm-1 col-md-3"></div>
+    <div class="col-10 col-sm-10 col-md-6 mt-5 me-5">
+        <form asp-action="PendingHotel">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" readonly/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" readonly />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StarRatig" class="control-label"></label>
+                <input asp-for="StarRatig" class="form-control" readonly />
+                <span asp-validation-for="StarRatig" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" readonly />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" readonly />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfRooms" class="control-label"></label>
+                <input asp-for="NumberOfRooms" class="form-control" readonly />
+                <span asp-validation-for="NumberOfRooms" class="text-danger"></span>
+            </div>
+            @* <div class="form-group form-check"> *@
+            @*     <label class="form-check-label"> *@
+            @*         <input class="form-check-input" asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted) *@
+            @*     </label> *@
+            @* </div> *@
+            <div class="form-group">
+                <label asp-for="ManagerId" class="control-label"></label>
+                <input asp-for="ManagerId" class="form-control" readonly  />
+                <span asp-validation-for="ManagerId" class="text-danger"></span>
+            </div>
+            @* <div class="form-group"> *@
+            @*     <label asp-for="Manager.UserName" class="control-label"></label> *@
+            @*     <input asp-for="Manager.UserName" class="form-control" readonly  /> *@
+            @*     <span asp-validation-for="ManagerId" class="text-danger"></span> *@
+            @* </div> *@
+            <div class="form-group">
+                <label asp-for="CityId" class="control-label"></label>
+                <input asp-for="CityId" class="form-control" readonly/>
+                <span asp-validation-for="CityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">City Name</label>
+                <input class="form-control" readonly value="@ViewBag.CityName" />
+                <span asp-validation-for="CityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Approve" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <a asp-action="HotelDenied" asp-controller="HotelAdmin" asp-route-id="@Model.Id" class="btn btn-danger"> Denied</a>
+            </div>
+            <div class ="form-group">
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

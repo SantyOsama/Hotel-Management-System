@@ -1,0 +1,80 @@
+﻿@model List<Room>
+@{
+    ViewData["Title"] = "Availiable Rooms";
+}
+
+<div class="hero">
+    <section class="home-slider owl-carousel stop-padding">
+        <div class="slider-item"
+             style="background-image: url(/images/hotel1.jpg)">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-end">
+                    <div class="col-md-6 ftco-animate">
+                        <div class="text">
+                            <h2>More than booking a hotel</h2>
+                            <h1 class="mb-3">Your Gateway to Comfort and Luxury.</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-item" style="background-image: url(/images/bg_2.jpg)">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-end">
+                    <div class="col-md-6 ftco-animate">
+                        <div class="text">
+                            <h2>Hotel Haven for Hotels &amp; Resorts</h2>
+                            <h1 class="mb-3">Where Every Journey Finds Its Haven.</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<partial name="_SearchRooms" />
+
+@* <h2>Available Rooms</h2> *@
+
+<div class="container">
+    <h2 class=" mb-3">Available Rooms</h2>
+
+    @if (Model.Any())
+    {
+        <div class="row">
+            @foreach (var room in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/images/room-1.jpg" class="card-img-top" alt="Room Image">
+                        <div class="card-body">
+                            <h5 class="card-title">Hotel: @room.Hotel.Name</h5>
+                            <div class="star-rating">
+                                @for (int i = 0; i < @room.Hotel.StarRatig; i++)
+                                {
+                                    <span style="color: gold; font-size: 1.5rem;">&#9733;</span>
+                                }
+                                @for (int i = @room.Hotel.StarRatig; i < 5; i++)
+                                {
+                                    <span style="color: gray; font-size: 1.5rem;">&#9733;</span>
+                                }
+                            </div>
+                            <p class="card-text">Price per night: $@room.PricePerNight</p>
+                            <p class="card-text">Room Number: @room.RoomNumber</p>
+                            <p class="card-text">City: @room.Hotel.City.Name</p>
+                            <p class="card-text">Type: @room.RoomType</p>
+                            <a asp-action="Room" asp-controller="Rooms" asp-route-id="@room.Id" class="btn btn-info rounded">Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No rooms available for the selected criteria.</p>
+    }
+</div>

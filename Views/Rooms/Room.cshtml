@@ -1,0 +1,134 @@
+﻿@model Room
+@{
+    ViewData["Title"] = "Room";
+}
+
+
+
+
+<div class="hero-wrap" style="background-image: url('/images/bg_3.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    @* <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotels.html">Hotels</a></span> <span>Hotel Name</span></p> *@
+                    <h1 class="mb-4 bread">Room</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-12 ftco-animate">
+                        <div class="single-slider owl-carousel">
+                            <div class="item">
+                                <div class="room-img" style="background-image: url(/images/room-4.jpg);"></div>
+                            </div>
+                            <div class="item">
+                                <div class="room-img" style="background-image: url(/images/room-5.jpg);"></div>
+                            </div>
+                            <div class="item">
+                                <div class="room-img" style="background-image: url(/images/room-6.jpg);"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
+                        <h2 class="mb-4 d-inline-block me-5">@Model.RoomType </h2> <a asp-action="Book" asp-controller="Cart" asp-route-RoomId="@Model.Id" class="btn btn-success text-white rounded"> Add To Card</a>
+                        <p>@Model.Description</p>
+                        <div class="d-md-flex mt-5 mb-5">
+                            <ul class="list">
+                                <li><span>Max:</span> @Model.Capacity</li>
+                                <li><span>View:</span> Sea View</li>
+                                <li><span>Room number:</span> @Model.RoomNumber</li>
+                            </ul>
+                         <!--
+
+                            <ul class="list ml-md-5">
+                                @* <li><span>Size:</span> 45 m2</li> *@
+
+							   </ul>-->
+                        </div>
+                        @* <p>asdasd</p> *@
+                    </div>
+
+
+<!--
+
+                  <div class="col-md-12 properties-single ftco-animate mb-5 mt-4">
+                        <h4 class="mb-4">Review &amp; Ratings</h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <label for="floatingTextarea2">Comment</label>
+                                    <textarea class="form-control mb-5" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 250px"></textarea>
+                                </div>          					<form method="post" class="star-rating">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">
+                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i> 100 Ratings</span></p>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">
+                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i> 30 Ratings</span></p>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">
+                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 5 Ratings</span></p>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">
+                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 0 Ratings</span></p>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                        <label class="form-check-label" for="exampleCheck1">
+                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 0 Ratings</span></p>
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+										</div>-->
+				</div>
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-4 sidebar ftco-animate pl-md-5">
+
+
+                <div class="sidebar-box ftco-animate">
+                    <h3>Tag Cloud</h3>
+                    <div class="tagcloud">
+                        <a href="#" class="tag-cloud-link">dish</a>
+                        <a href="#" class="tag-cloud-link">menu</a>
+                        <a href="#" class="tag-cloud-link">food</a>
+                        <a href="#" class="tag-cloud-link">sweet</a>
+                        <a href="#" class="tag-cloud-link">tasty</a>
+                        <a href="#" class="tag-cloud-link">delicious</a>
+                        <a href="#" class="tag-cloud-link">desserts</a>
+                        <a href="#" class="tag-cloud-link">drinks</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3>Paragraph</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!-- .section -->

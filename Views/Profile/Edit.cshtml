@@ -1,0 +1,78 @@
+﻿@model HotelMangementSystem.ViewModels.ProfileViewModel
+@{
+    ViewData["Title"] = "Edit My Profile";
+
+}
+<div class="hero-wrap" style="background-image: url('/images/bg_3.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    @* <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotels.html">Hotels</a></span> <span>Hotel Name</span></p> *@
+                    <h1 class="mb-4 bread">Edit Profile</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-1 col-sm-1 col-md-3"></div>
+    <div class="col-10 col-sm-10 col-md-6 mt-5 me-5">
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProfileImage"></label>
+                <input asp-for="ProfileImage" type="file" class="form-control" value="@Model.CurrentProfilePictureUrl" accept="image/*" src="@Model.CurrentProfilePictureUrl" />
+        <span asp-validation-for="ProfileImage" class="text-danger"></span>
+
+        @if (!string.IsNullOrEmpty(Model.CurrentProfilePictureUrl))
+        {
+            <img src="@Model.CurrentProfilePictureUrl" width="150" style="margin-top: 10px;" />
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2 mb-5">Save Changes</button>
+</form>
+        </div>
+        </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+@* <script> *@
+@*     // Get a reference to our file input *@
+@*     const fileInput = document.querySelector('input[type="file"]'); *@
+
+@*     // Create a new File object for an image *@
+@*     // You can use any image data for the content, here we just simulate it as empty *@
+@*     const imageContent = new Blob([], { type: 'image/png' }); // Simulated empty image data *@
+@*     const myImageFile = new File([imageContent], 'imageFile.png', { *@
+@*         type: 'image/png', *@
+@*         lastModified: new Date() *@
+@*     }); *@
+
+@*     // Create a DataTransfer object to mimic a FileList *@
+@*     const dataTransfer = new DataTransfer(); *@
+@*     dataTransfer.items.add(myImageFile); // Add the image file to the FileList *@
+@*     fileInput.files = dataTransfer.files; // Assign the FileList to the input *@
+@* </script> *@

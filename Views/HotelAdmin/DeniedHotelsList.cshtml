@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "DeniedHotelsList";
+}
+
+<div class="hero-wrap" style="background-image: url('/images/bg_3.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    @* <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotels.html">Hotels</a></span> <span>Hotel Name</span></p> *@ 
+                    <h1 class="mb-4 bread">Denied Hotels</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="d-flex flex-row justify-content-between flex-wrap p-5">
+
+    @foreach (var hotel in Model)
+    {
+        <div class="card mb-4" style="width: 20rem;">
+            @* <img src="..." class="card-img-top" alt="..."> *@
+            <div class="card-body">
+                <h5 class="card-title">@hotel.Name</h5>
+                <p class="card-text">@hotel.Description</p>
+                <p class="card-text">@hotel.Location</p>
+                <a asp-action="PendingHotel" asp-controller="HotelAdmin" asp-route-id="@hotel.Id" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+
+

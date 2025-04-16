@@ -1,0 +1,283 @@
+﻿@using static HotelMangementSystem.Models.Enums.Enums
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_CustomeLayout";
+}
+
+<div class="hero">
+    <section class="home-slider owl-carousel stop-padding">
+        <div class="slider-item"
+             style="background-image: url(images/hotel1.jpg)">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-end">
+                    <div class="col-md-6 ftco-animate">
+                        <div class="text">
+                            <h2>More than booking a hotel</h2>
+                            <h1 class="mb-3">Your Gateway to Comfort and Luxury.</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-item" style="background-image: url(images/bg_2.jpg)">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row no-gutters slider-text align-items-center justify-content-end">
+                    <div class="col-md-6 ftco-animate">
+                        <div class="text">
+                            <h2>Hotel Haven for Hotels &amp; Resorts</h2>
+                            <h1 class="mb-3">Where Every Journey Finds Its Haven.</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<partial name="_SearchRooms" />
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <span class="subheading">Welcome to Hotel Heaven </span>
+                <h3 class="mb-4">Find Your Perfect Stay, Your Way.</h3>
+            </div>
+        </div>
+        <div class="row d-flex">
+            <div class="col-md pr-md-1 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services py-4 d-block text-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="flaticon-reception-bell"></span>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Friendly Service</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md px-md-1 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services active py-4 d-block text-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="flaticon-serving-dish"></span>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Get Breakfast</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md px-md-1 d-flex align-sel Searchf-stretch ftco-animate">
+                <div class="media block-6 services py-4 d-block text-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="flaticon-car"></span>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Transfer Services</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md px-md-1 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services py-4 d-block text-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="flaticon-spa"></span>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Suits &amp; SPA</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md pl-md-1 d-flex align-self-stretch ftco-animate">
+                <div class="media block-6 services py-4 d-block text-center">
+                    <div class="d-flex justify-content-center">
+                        <div class="icon d-flex align-items-center justify-content-center">
+                            <span class="ion-ios-bed"></span>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="heading mb-3">Cozy Rooms</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>@*Our Momyzat*@
+
+<section class="ftco-section ftco-wrap-about ftco-no-pt ftco-no-pb">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-7 order-md-last d-flex">
+                <div class="img img-1 mr-md-2 ftco-animate"
+                     style="background-image: url(images/about-1.jpg)"></div>
+                <div class="img img-2 ml-md-2 ftco-animate"
+                     style="background-image: url(images/about-2.jpg)"></div>
+            </div>
+            <div class="col-md-5 wrap-about pb-md-3 ftco-animate pr-md-5 pb-md-5 pt-md-4">
+                <div class="heading-section mb-4 my-5 my-md-0">
+                    <span class="subheading">About Hotel Haven</span>
+                    <h2 class="mb-4">
+                        Hotel Haven is the Most Recommended Hotel Booking Website All
+                        Over the World
+                    </h2>
+                </div>
+                <p>
+                    Far far away, behind the word mountains, far from the countries
+                    Vokalia and Consonantia, there live the blind texts. Separated
+                    they live in Bookmarksgrove right at the coast of the Semantics, a
+                    large language ocean.
+                </p>
+                <p>
+                    <a asp-action="Index" asp-controller="Hotels" class="btn btn-secondary rounded">Reserve Your Room Now</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section> @*About Hotel Haven*@
+
+<section class="testimony-section">
+    <div class="container">
+        <div class="row no-gutters ftco-animate justify-content-center">
+            <div class="col-md-5 d-flex">
+                <div class="testimony-img aside-stretch-2"
+                     style="background-image: url(images/testimony-img.jpg)"></div>
+            </div>
+            <div class="col-md-7 py-5 pl-md-5">
+                <div class="py-md-5">
+                    <div class="heading-section ftco-animate mb-4">
+                        <span class="subheading">Our Customer Reviews</span>
+                        <h2 class="mb-0">Happy Customer</h2>
+                    </div>
+                    <div class="carousel-testimony owl-carousel ftco-animate">
+                        @foreach (Review review in ViewBag.reviews)
+                        {
+                             <div class="item">
+                            <div class="testimony-wrap pb-4">
+                                <div class="mb-1">
+                                    @* <p class="mb-4"> *@
+                                    @*     @review.Content *@
+                                    @* </p> *@
+                                    <p class="mb-0">
+                                          
+                                            <a href="/Hotels/Hotel/ @review.Hotel?.Id" class="text-dark-emphasis">
+                                                @review.Hotel?.Name
+                                            </a>
+
+                                            <div class="star-rating">
+                                                @for (int i = 0; i < @review.Hotel.StarRatig; i++)
+                                                {
+                                                    <span style="color: gold; font-size: 1.5rem;">&#9733;</span>
+                                                }
+                                                @for (int i = @review.Hotel.StarRatig; i < 5; i++)
+                                                {
+                                                    <span style="color: gray; font-size: 1.5rem;">&#9733;</span>
+                                                }
+                                            </div>
+                                    </p>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="user-img"
+                                         style="background-image: url(images/person_1.jpg)"></div>
+                                    <div class="pos ml-3">
+                                        <p class="name">@review.User?.UserName</p>
+                                            <p class="position text-dark">@review.Content</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                       
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> @*Happy Customer*@
+
+<section class="ftco-section ftco-no-pb ftco-room">
+    <div class="container-fluid px-0">
+        <div class="row no-gutters justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <span class="subheading">Hotels</span>
+                <h2 class="mb-4">Recommended Hotels</h2>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            @foreach (Hotel hotel in ViewBag.hotels)
+            {
+                <div class="col-lg-6">
+                    <div class="room-wrap d-md-flex ftco-animate">
+                        <a href="/Hotels/Hotel/@hotel.Id"
+                           class="img"
+                           style="background-image: url(images/room-6.jpg)"></a>
+                        <div class="half left-arrow d-flex align-items-center">
+                            <div class="text p-4 text-center">
+                                <h3 class="mb-3"><a href="/Hotels/Hotel/@hotel.Id">@hotel.Name</a></h3>
+
+                                <div class="star-rating">
+                                    @for (int i = 0; i < @hotel.StarRatig; i++)
+                                    {
+                                        <span style="color: gold; font-size: 1.5rem;">&#9733;</span>
+                                    }
+                                    @for (int i = @hotel.StarRatig; i < 5; i++)
+                                    {
+                                        <span style="color: gray; font-size: 1.5rem;">&#9733;</span>
+                                    }
+                                </div>
+                               
+                                <p class="pt-1">
+                                    <a href="/Hotels/Hotel/@hotel.Id"
+                                       class="btn-custom px-3 py-2 rounded">
+                                        View Details <span class="icon-long-arrow-right"></span>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+        
+        </div>
+    </div>
+</section> @*Recommended Hotels*@
+
+
+
+@* <script>
+    function updateGuests() {
+        var roomType = document.getElementById("roomType").value;
+        var guestSelect = document.getElementById("guestSelect");
+
+        guestSelect.innerHTML = "";
+
+        var maxGuests = 10;
+        if (roomType === "Suite" || roomType === "Family" ) {
+            maxGuests = 10; 
+        } else if (roomType === "Double") {
+            maxGuests = 2; 
+        } else if (roomType === "Single") {
+            maxGuests = 1; 
+        }
+
+        for (var i = 1; i <= maxGuests; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i + (i === 1 ? " Adult" : " Adults");
+            guestSelect.appendChild(option);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", updateGuests);
+</script> *@
+
+

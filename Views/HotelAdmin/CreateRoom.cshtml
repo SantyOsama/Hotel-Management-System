@@ -1,0 +1,59 @@
+﻿@using HotelMangementSystem.Models.Enums
+@using HotelMangementSystem.ViewModels
+
+@model RoomViewModel
+
+
+
+<div class="hero-wrap" style="background-image: url('/images/bg_3.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    @* <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="hotels.html">Hotels</a></span> <span>Hotel Name</span></p> *@ 
+                    <h1 class="mb-4 bread">Add new Room</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6 mt-5 me-5">
+       
+<form asp-action="CreateRoom" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="HotelId" />
+            <label asp-for ="RoomNumber">Room Number:</label>
+    <input asp-for="RoomNumber" class="form-control mb-2" />
+    <label>Description:</label>
+            <input asp-for="Description" class="form-control mb-2" />
+    <label>Room Type:</label>
+            <select class="form-control mb-2" asp-for="RoomType">
+                <option value="-1">-- Select Room Type --</option>
+
+                @foreach (var item in Enum.GetValues(typeof(Enums.RoomTypes)))
+                {
+                    <option value="@((int)item)">@item.ToString()</option>
+                }
+    </select>
+    <label>Capacity:</label>
+            <input asp-for="Capacity" class="form-control mb-2" />
+    <label>Price Per Night:</label>
+            <input asp-for="PricePerNight" class="form-control mb-2" />
+            <button type="submit" class="btn btn-primary mb-2 rounded">Add Room</button>
+</form>
+    </div>
+</div>
+
+
+<partial name="_ValidationScriptsPartial" />
+
+
